@@ -1,0 +1,26 @@
+name: Python 2
+
+on: # [push]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: python-2 multi-line
+      
+    run: |
+      python -c "import sys; print(sys.version)"
+      python -c "import os; print('CWD:', os.getcwd())"
+    
+    #pip install --upgrade pip
+    #pip install -r requirements.txt
+  
