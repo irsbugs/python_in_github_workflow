@@ -24,9 +24,10 @@ jobs:
           import sys
           print('Python Version:', sys.version)
           with open("demofile", "a") as f:
-              f.write("Now the file has more content!")
-              f.write("Apppending some more content.")
+              f.write("Now the file has more content!" + "\n")
+              f.write("Apppending some more content." + "\n")
           print("os.listdir():", os.listdir())
+          print("Contents of demofile:")
           with open("demofile", "r") as fin:
               for line in fin.readlines():
                   print(line)
