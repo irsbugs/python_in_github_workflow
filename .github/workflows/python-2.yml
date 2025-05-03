@@ -34,19 +34,16 @@ jobs:
           print("end")
           
 
-          
-        #- name: python-2 multi-line      
-        #run: |
-        #  python -c "import sys; print('Python Version:', sys.version)"
-        #  python -c "import os; print('Current Working Directory 1:', os.getcwd())"
-        #  python -c "import os; print('Current Working Directory 2:', os.getcwd())" 
-          
-          
-        # Fails Did you forget to import os? Needs to be all in one command
-        #python - c "import os"
-        #python -c "print('Current Working Directory 2:', os.getcwd())"
-  
-    #pip install --upgrade pip
-    #pip install -r requirements.txt
-    #
+
+
+# Current Working Directory 1: /home/runner/work/test.github.io/test.github.io
+# Python Version: 3.13.3 (main, Apr  9 2025, 01:39:32) [GCC 13.3.0]
+# os.listdir(): ['demofile', '.github', '.git', 'README.md']
+# Contents of demofile:
+# Now the file has more content!
+#
+# Apppending some more content.
+#
+# end
+
   
