@@ -23,6 +23,12 @@ jobs:
           print('Current Working Directory 1:', os.getcwd())
           import sys
           print('Python Version:', sys.version)
+          with open("demofile", "a") as f:
+              f.write("Now the file has more content!")
+              f.write("Apppending some more content.")
+          print("os.listdir():", os.listdir())
+
+
           
         #- name: python-2 multi-line      
         #run: |
