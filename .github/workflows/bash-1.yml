@@ -15,5 +15,14 @@ jobs:
     steps:
       - name: Display the path
         shell: bash
-        run: echo $PATH
-        
+        run: |
+          echo '$PATH:'
+          echo $PATH
+          echo 'ls -l:'
+          ls -l
+          echo 'date:'
+          date
+
+
+
+          
