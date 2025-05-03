@@ -18,8 +18,10 @@ jobs:
         run: |
           echo '$PATH:'
           echo $PATH
+          echo 'pwd'
+          pwd
           echo 'ls -l:'
-          ls -l
+          ls -l  # total 0
           echo 'date:'
           date
 
