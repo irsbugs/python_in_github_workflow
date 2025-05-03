@@ -17,9 +17,9 @@ jobs:
           python-version: '3.x'
       - name: python-2 multi-line
       
-    run: |
-      python -c "import sys; print(sys.version)"
-      python -c "import os; print('CWD:', os.getcwd())"
+        run: |
+          python -c "import sys; print(sys.version)"
+          python -c "import os; print('CWD:', os.getcwd())"
     
     #pip install --upgrade pip
     #pip install -r requirements.txt
