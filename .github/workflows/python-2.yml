@@ -27,7 +27,11 @@ jobs:
               f.write("Now the file has more content!")
               f.write("Apppending some more content.")
           print("os.listdir():", os.listdir())
-
+          with open("demofile", "r") as fin:
+              for line in fin.readlines():
+                  print(line)
+          print("end")
+          
 
           
         #- name: python-2 multi-line      
