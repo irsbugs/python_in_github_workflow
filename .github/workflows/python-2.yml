@@ -15,16 +15,25 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: python-2 multi-line      
+      - name: python-2 multi-line
+        shell: python
         run: |
-          python -c "import sys; print('Python Version:', sys.version)"
-          python -c "import os; print('Current Working Directory 1:', os.getcwd())"
-          python -c "import os; print('Current Working Directory 2:', os.getcwd())" 
+          import os
+          print('os.environ["PATH"]:', os.environ['PATH'])
+          print('Current Working Directory 1:', os.getcwd()
+          import sys
+          print('Python Version:', sys.version)
+          
+        #- name: python-2 multi-line      
+        #run: |
+        #  python -c "import sys; print('Python Version:', sys.version)"
+        #  python -c "import os; print('Current Working Directory 1:', os.getcwd())"
+        #  python -c "import os; print('Current Working Directory 2:', os.getcwd())" 
           
           
-          # Fails Did you forget to import os? Needs to be all in one command
-          #python - c "import os"
-          #python -c "print('Current Working Directory 2:', os.getcwd())"
+        # Fails Did you forget to import os? Needs to be all in one command
+        #python - c "import os"
+        #python -c "print('Current Working Directory 2:', os.getcwd())"
   
     #pip install --upgrade pip
     #pip install -r requirements.txt
