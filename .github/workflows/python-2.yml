@@ -20,9 +20,8 @@ jobs:
           python -c "import sys; print('Python Version:', sys.version)"
           python -c "import os; print('Current Working Directory 1:', os.getcwd())"
           #python -c "import os" 
-          python
-          import os
-          print('Current Working Directory 2:', os.getcwd())
+          python - c "import os"
+          python -c "print('Current Working Directory 2:', os.getcwd())"
   
     #pip install --upgrade pip
     #pip install -r requirements.txt
