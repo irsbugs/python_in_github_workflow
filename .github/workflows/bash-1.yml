@@ -22,6 +22,8 @@ jobs:
           pwd
           echo 'ls -l:'
           ls -l  # total 0
+          echo 'touch demo'
+          touch demo
           echo 'ls -l /home/runner/work/test.github.io/test.github.io'
           ls -l /home/runner/work/test.github.io/test.github.io
           echo 'date:'
