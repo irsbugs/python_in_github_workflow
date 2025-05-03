@@ -16,12 +16,14 @@ jobs:
       - name: Display the path
         shell: bash
         run: |
-          echo '$PATH:'
-          echo $PATH
+          #echo '$PATH:'
+          #echo $PATH
           echo 'pwd'
           pwd
           echo 'ls -l:'
           ls -l  # total 0
+          echo 'ls -l /home/runner/work/test.github.io/test.github.io'
+          ls -l /home/runner/work/test.github.io/test.github.io
           echo 'date:'
           date
 
