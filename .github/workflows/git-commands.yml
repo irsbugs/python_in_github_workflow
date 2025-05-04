@@ -15,10 +15,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           date > generated.txt
-          mkdir test
+          mkdir -p test
           date > test/generated1.txt
           # Note: the following account information will not work on GHES
-          git config user.name "github-actions[bot]"
+          #git config user.name "github-actions[bot]"
+          git config user.name "irsbugs"          
           #git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.email "irsbugs@hotmail.com"          
           git add .
