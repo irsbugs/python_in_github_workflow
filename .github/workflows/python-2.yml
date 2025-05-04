@@ -6,10 +6,8 @@ on: # [push]
 
 jobs:
   build:
-  
-  version:
     permissions: write-all
-    name: versioning
+    
     runs-on: ubuntu-latest
     
     steps:
@@ -39,19 +37,6 @@ jobs:
                   print(line)
           print("end")
           
-          """
-          permissions:
-            actions: read|write|none
-            checks: read|write|none
-            contents: read|write|none
-            deployments: read|write|none
-            issues: read|write|none
-            packages: read|write|none
-            pull-requests: read|write|none
-            repository-projects: read|write|none
-            security-events: read|write|none
-            statuses: read|write|none
-          """
 # Current Working Directory 1: /home/runner/work/test.github.io/test.github.io
 # Python Version: 3.13.3 (main, Apr  9 2025, 01:39:32) [GCC 13.3.0]
 # os.listdir(): ['demofile', '.github', '.git', 'README.md']
