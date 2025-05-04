@@ -6,7 +6,10 @@ on: # [push]
 
 jobs:
   build:
-
+  
+  version:
+    permissions: write-all
+    name: versioning
     runs-on: ubuntu-latest
     
     steps:
