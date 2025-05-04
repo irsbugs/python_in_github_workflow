@@ -18,7 +18,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          dry_run: false
+          #  ['python-version', 'python-version-file', 'cache', 'architecture', 'check-latest', 'token', 
+          #   'cache-dependency-path', 'update-environment', 'allow-prereleases', 'freethreaded']
+          #dry_run: false <-- Warning: Unexpected input(s) 'dry_run'
       - name: python-2 multi-line
         shell: python
         run: |
