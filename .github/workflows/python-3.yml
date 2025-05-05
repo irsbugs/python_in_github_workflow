@@ -40,8 +40,8 @@ jobs:
 
           # Add a file. Like touch in bash
           # TODO: have a list, add files from list loop
-          if not os.path.exists('/testz/testfile'):
-              os.mknod('/testz/testfile')
+          if not os.path.exists('testz/testfile'):
+              os.mknod('testz/testfile')
               
           #date > test/generated1.txt
           
