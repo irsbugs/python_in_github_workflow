@@ -4,7 +4,8 @@ name: Python 3
 # Should create the file generated.txt
 
 on: # [push]
-  # Allows you to run this workflow manually from the Actions tab
+
+  # Run this workflow manually from the Actions tab
   workflow_dispatch:
   
 jobs:
@@ -17,7 +18,7 @@ jobs:
       - name: Actions Checkout v4
         uses: actions/checkout@v4
         #with:
-        #  base: main
+        #  base: main TODO run in src
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -36,12 +37,15 @@ jobs:
 
           # Add a folder. like bash mkdir
           #mkdir -p test
-          os.makedirs("testz/", exist_ok=True)
+          
+          folder_list = ["testa", "testb", "testc",]          
+          for folder in folder_list:
+              os.makedirs(folder, exist_ok=True)
 
-          # Add a file. Like touch in bash
-          # TODO: have a list, add files from list loop
-          if not os.path.exists('testz/testfile'):
-              os.mknod('testz/testfile')
+              # Add a file. Like touch in bash
+              # TODO: have a list, add files from list loop
+              if not os.path.exists(folder + "/testfile"):
+                  os.mknod(folder + "/testfile")
               
           #date > test/generated1.txt
           
