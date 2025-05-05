@@ -43,9 +43,11 @@ jobs:
               os.makedirs(folder, exist_ok=True)
 
               # Add a file. Like touch in bash
-              # TODO: have a list, add files from list loop
-              if not os.path.exists(folder + "/testfile"):
-                  os.mknod(folder + "/testfile")
+              # Have a list, add files from list loop
+              file_list = ["testfile", "testfile1", "testfile2",]
+              for file in file_list:
+                  if not os.path.exists(folder + "/" + file):
+                      os.mknod(folder + "/" file)
               
           #date > test/generated1.txt
           
