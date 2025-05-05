@@ -1,3 +1,4 @@
+name: Python 3
 # Example from https://gitea.com/actions/checkout
 # Push a commit using the built-in token
 # Should create the file generated.txt
@@ -11,17 +12,65 @@ jobs:
     permissions: write-all
   
     runs-on: ubuntu-latest
+
+###
+name: Python 2
+
+on: # [push]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions: write-all
+    
+    runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          date > generated.txt
-          mkdir -p test
-          date > test/generated1.txt
-          # Note: the following account information will not work on GHES
+      - name: Actions Checkout v4
+        uses: actions/checkout@v4
+        #with:
+        #  base: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          #  ['python-version', 'python-version-file', 'cache', 'architecture', 'check-latest', 'token', 
+          #   'cache-dependency-path', 'update-environment', 'allow-prereleases', 'freethreaded']
+          #dry_run: false <-- Warning: Unexpected input(s) 'dry_run'
+      - name: python-2 multi-line
+        shell: python
+        run: |
+          import os
+          import sys
+          import subprocess
+          
+          #date > generated.txt
+
+          # Add a folder. like bash mkdir
+          #mkdir -p test
+          os.makedirs("testz/", exist_ok=True)
+
+          # Add a file. Like touch in bash
+          # TODO: have a list, add files from list loop
+          if not os.path.exists('/testz/testfile'):
+              os.mknod('/testz/testfile')
+              
+          #date > test/generated1.txt
+          
+          subprocess.run('''
+              # Git instructions - performed by bash
+              git config user.name "irsbugs"
+              git config user.email "irsbugs@hotmail.com"          
+              git add .
+              git commit -m "generated"
+              git push''',
+              shell=True, check=True, executable='/bin/bash')
+          
           #git config user.name "github-actions[bot]"
-          git config user.name "irsbugs"          
+          #git config user.name "irsbugs"          
           #git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.email "irsbugs@hotmail.com"          
-          git add .
-          git commit -m "generated"
-          git push
+          #git config user.email "irsbugs@hotmail.com"          
+          #git add .
+          #git commit -m "generated"
+          #git push
