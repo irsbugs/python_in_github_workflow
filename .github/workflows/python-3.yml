@@ -12,19 +12,6 @@ jobs:
     permissions: write-all
   
     runs-on: ubuntu-latest
-
-###
-name: Python 2
-
-on: # [push]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-jobs:
-  build:
-    permissions: write-all
-    
-    runs-on: ubuntu-latest
     
     steps:
       - name: Actions Checkout v4
@@ -38,7 +25,7 @@ jobs:
           #  ['python-version', 'python-version-file', 'cache', 'architecture', 'check-latest', 'token', 
           #   'cache-dependency-path', 'update-environment', 'allow-prereleases', 'freethreaded']
           #dry_run: false <-- Warning: Unexpected input(s) 'dry_run'
-      - name: python-2 multi-line
+      - name: Python-3 multi-line code
         shell: python
         run: |
           import os
