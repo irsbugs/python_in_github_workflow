@@ -12,7 +12,7 @@ jobs:
   build:
     #permissions: write-all
     permissions:
-      actions: write #read|write|none
+      #actions: write #read|write|none
       #attestations: #read|write|none
       #checks: #read|write|none
       contents: write #read|write|none
@@ -23,7 +23,7 @@ jobs:
       #discussions: #read|write|none
       #packages: #read|write|none
       #pages: #read|write|none
-      pull-requests: write #read|write|none
+      #pull-requests: write #read|write|none
       #security-events: #read|write|none
       #statuses: #read|write|none
       
