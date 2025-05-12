@@ -54,13 +54,13 @@ jobs:
           # Add a folder. like bash mkdir
           #mkdir -p test
           
-          folder_list = ["testa", "testb",]          
+          folder_list = ["test_a", "test_b",]          
           for folder in folder_list:
               os.makedirs(folder, exist_ok=True)
 
               # Add a file. Like touch in bash
               # Have a list, add files from list loop
-              file_list = ["testfile1", "testfile1",]
+              file_list = ["testfile_1", "testfile_2",]
               for file in file_list:
                   if not os.path.exists(folder + "/" + file):
                       os.mknod(folder + "/" + file)
