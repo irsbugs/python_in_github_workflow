@@ -10,7 +10,7 @@ on: # [push]
   
 jobs:
   build:
-    permissions: write-all
+    #permissions: write-all
   
     runs-on: ubuntu-latest
     
