@@ -63,6 +63,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           #pip install -r requirements.txt
+          pip install matplotlib
           
       - name: Python multi-line code
         shell: python
@@ -71,10 +72,10 @@ jobs:
           import sys
           import subprocess
           import time
-          try:
-            import matplotlib
+          #try:
+          import matplotlib
           except:
-            pass
+          #pass
             
           #yaml editor triggers on colon :
           with open("test_info", "w") as fout:
@@ -89,10 +90,10 @@ jobs:
 
               fout.write("time.ctime(): " + time.ctime() + "\n")
               
-              #fout.write("matplotlib._get_version(): " + str(matplotlib._get_version()) + "\n")
+              fout.write("matplotlib._get_version(): " + str(matplotlib._get_version()) + "\n")
               
-              string = help('modules')
-              fout.write("help('modules'):" + string + "\n")
+              help('modules')
+              #fout.write("help('modules'):" + string + "\n")
               
               fout.write("...end of info.\n")
 
