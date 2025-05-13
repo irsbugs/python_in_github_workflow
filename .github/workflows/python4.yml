@@ -77,7 +77,8 @@ jobs:
           import time
           
           import matplotlib
-            
+          pip list
+          
           #yaml editor triggers on colon :
           with open("test_info", "w") as fout:
               fout.write("test_info. Created by running python in yml .github/workflows file. \nStart of info...\n")
