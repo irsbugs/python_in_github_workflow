@@ -6,5 +6,6 @@ sys.platform: linux
 sys.path: ['/home/runner/work/_temp', '/opt/hostedtoolcache/Python/3.13.3/x64/lib/python313.zip', '/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13', '/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13/lib-dynload', '/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13/site-packages']
 os.getcwd(): /home/runner/work/test.github.io/test.github.io
 os.environ['PATH']: /opt/hostedtoolcache/Python/3.13.3/x64/bin:/opt/hostedtoolcache/Python/3.13.3/x64:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-time.ctime(): Tue May 13 02:14:28 2025
+time.ctime(): Tue May 13 11:25:59 2025
+matplotlib._get_version(): 3.10.3
 ...end of info.
