@@ -64,7 +64,7 @@ jobs:
           python -m pip install --upgrade pip
           #pip install -r requirements.txt
           pip install matplotlib
-          
+          pip install pkg_resources
       - name: Python multi-line code
         shell: python
         run: |
