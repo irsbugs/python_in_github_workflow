@@ -86,7 +86,7 @@ jobs:
 
               fout.write("time.ctime(): " + time.ctime() + "\n")
 
-              fout.write("matplotlib._get_version(): " + str(matplotlib._get_version() + "\n")
+              fout.write("matplotlib._get_version(): " + str(matplotlib._get_version()) + "\n")
  
               fout.write("help('modules'):" + help('modules') + "\n")
               
