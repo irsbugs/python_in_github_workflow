@@ -72,10 +72,8 @@ jobs:
           import sys
           import subprocess
           import time
-          #try:
+          
           import matplotlib
-          except:
-          #pass
             
           #yaml editor triggers on colon :
           with open("test_info", "w") as fout:
