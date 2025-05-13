@@ -66,6 +66,7 @@ jobs:
           pip install matplotlib
           
           python -m pip list > python_modules_list
+          python -m pip freeze > python_modules_freeze
 
       - name: Python multi-line code
         shell: python
