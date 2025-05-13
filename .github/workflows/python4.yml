@@ -95,6 +95,15 @@ jobs:
               
               fout.write("...end of info.\n")
 
+              import pkg_resources
+              installed_packages = [(d.project_name, d.version) for d in pkg_resources.working_set]
+              #print(installed_packages)
+
+              #with open("test_help", "w") as fout:
+              for item in installed_packages:
+                  fout.write(item[0] + " " + str(item[1]) + "\n" )
+
+
           # Add a folder. In bash "mkdir -p test"         
           folder_list = ["test_a", "test_b",]          
           for folder in folder_list:
