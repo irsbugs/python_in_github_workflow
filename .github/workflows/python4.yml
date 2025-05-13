@@ -64,7 +64,9 @@ jobs:
           python -m pip install --upgrade pip
           #pip install -r requirements.txt
           pip install matplotlib
-          pip install pkg_resources
+          
+          python -m pip list > python_modules_list
+
       - name: Python multi-line code
         shell: python
         run: |
@@ -95,13 +97,13 @@ jobs:
               
               fout.write("...end of info.\n")
 
-              import pkg_resources
-              installed_packages = [(d.project_name, d.version) for d in pkg_resources.working_set]
+              #import pkg_resources
+              #installed_packages = [(d.project_name, d.version) for d in pkg_resources.working_set]
               #print(installed_packages)
 
               #with open("test_help", "w") as fout:
-              for item in installed_packages:
-                  fout.write(item[0] + " " + str(item[1]) + "\n" )
+              #for item in installed_packages:
+              #    fout.write(item[0] + " " + str(item[1]) + "\n" )
 
 
           # Add a folder. In bash "mkdir -p test"         
