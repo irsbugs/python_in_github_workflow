@@ -1,0 +1,102 @@
+name: Python in Github Workflow
+#
+# python.yml
+#
+# Run python code in .github/workflows/python.yml
+# Make some folders and files in a github repository.
+#
+# References:
+# https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python
+# https://gitea.com/actions/checkout  <-- "Push a commit using the built-in token"
+# 
+# For github repository: Settings --> Actions --> General --> Workflow permissions --> Check: Read and Write permissions, then Save
+# Ian Stewart - 2025-05-08
+# Future: https://pypi.org/project/python-git/#description
+#
+on: 
+  #push:
+  #  branches: [ main ]
+
+  # Run this workflow manually from the Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
+  # If python.yml is "main" branch.
+  workflow_dispatch:
+  
+jobs:
+  build:
+  
+    # Will have error doing the push if no permissions.
+    # Either: Settings --> Actions --> General --> Workflow permissions --> check - "Read and write permissions" and then Save.
+    # OR: have "permissions: write-all" in the yml script...
+    #permissions: write-all
+    # OR: Set individual permissions. "contents: write" may be enough...
+    permissions:
+      #actions: write #read|write|none
+      #attestations: #read|write|none
+      #checks: #read|write|none
+      contents: write #read|write|none
+      #deployments: #read|write|none
+      #id-token: #write|none
+      #issues: #read|write|none
+      #models: #read|none
+      #discussions: #read|write|none
+      #packages: #read|write|none
+      #pages: #read|write|none
+      #pull-requests: #read|write|none
+      #security-events: #read|write|none
+      #statuses: #read|write|none
+      
+    #permissions: read-all
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Actions Checkout v4
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          #  ['python-version', 'python-version-file', 'cache', 'architecture', 'check-latest', 'token', 
+          #   'cache-dependency-path', 'update-environment', 'allow-prereleases', 'freethreaded']
+      - name: Python multi-line code
+        shell: python
+        run: |
+          import os
+          import sys
+          import subprocess
+          import time
+
+          #yaml editor triggers on colon :
+          with open("test_info", "w") as fout:
+              fout.write("test_info. Created by running python in yml .github/workflows file. \nStart of info...\n")
+              fout.write("sys.version: " + str(sys.version) + "\n")
+              fout.write("sys.version_info: " + str(sys.version_info) + "\n")
+              fout.write("sys.platform: " + sys.platform + "\n")
+              fout.write("sys.path: " + str(sys.path) + "\n")
+
+              fout.write("os.getcwd(): " + os.getcwd() + "\n")
+              fout.write("os.environ['PATH']: " + os.environ['PATH'] + "\n")
+
+              fout.write("time.ctime(): " + time.ctime() + "\n")
+              fout.write("...end of info.\n")
+
+          # Add a folder. In bash "mkdir -p test"         
+          folder_list = ["test_a", "test_b",]          
+          for folder in folder_list:
+              os.makedirs(folder, exist_ok=True)
+
+              # Add a file. In bash "touch testfile"
+              file_list = ["testfile1", "testfile2",]
+              for file in file_list:
+                  if not os.path.exists(folder + "/" + file):
+                      os.mknod(folder + "/" + file)
+                      
+          # Use subprocess to run the git commands to push the updates to github.
+          subprocess.run('''
+              git config user.name "irsbugs"
+              git config user.email "irsbugs@hotmail.com"          
+              git add .
+              git commit -m "generated"
+              git push''',
+              shell=True, check=True, executable='/bin/bash')
+              
