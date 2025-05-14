@@ -2,8 +2,8 @@ name: Python in Github Workflow
 #
 # python.yml
 #
-# Run python code in .github/workflows/python.yml
-# Make some folders and files in a github repository.
+# Run python code in .github/workflows/python.yml for demonstation of Python in a Github Workflow.
+# Creates some folders and files, gets information, performs pip install, writes to files, etc.
 #
 # References:
 # https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python
@@ -15,12 +15,15 @@ name: Python in Github Workflow
 #
 on: 
   #push:
-  #  branches: 
-  #  -main
-  #  -src
+    #branches: 
+    #- main
+    #- src
 
-  # Run this workflow manually from the Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
-  # If python.yml is "main" branch.
+  # As long as .github/workflows/python.yml is in branch = "main", then
+  # "workflow_dispatch" allows manually running this workflow: Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
+  # For another branch (E.g. src) Uncomment "push" and "branches:" and "-src" (above) and 
+  # copy python.yml to main.yml and place in src branch .github/workflows/main.yml
+  # Ad
   workflow_dispatch:
   
 jobs:
@@ -74,18 +77,21 @@ jobs:
           import sys
           import subprocess
           import time
+          import warnings
+          import importlib.metadata
           # pip will have downloaded from PyPI and installed matplotlib
           import matplotlib
 
           filename = "help_info"
+          filename_1 = "python_packages"
           account_name = "irsbugs"
           account_email = "irsbugs@hotmail.com"
 
-          #yaml editor triggers on colon :
 
           def python_modules():
               # Review the Actions log file to see output from... 
               help("modules")
+
           
           def get_info(): 
               # Collect information using, sys, os, time, matplotlib
@@ -102,17 +108,30 @@ jobs:
               data_list.append("time.ctime(): " + time.ctime())
               data_list.append("matplotlib._get_version(): " + str(matplotlib._get_version()))
               data_list.append("...end of info.")
-
               return data_list
-              
 
-              #import pkg_resources
-              #installed_packages = [(d.project_name, d.version) for d in pkg_resources.working_set]
-              #print(installed_packages)
               
-              #with open("test_help", "w") as fout:
-              #for item in installed_packages:
-              #    fout.write(item[0] + " " + str(item[1]) + "\n" )
+          def list_installed_packages():
+              distributions = importlib.metadata.distributions()
+              installed_packages = []
+              for dist in distributions:
+                  with warnings.catch_warnings():
+                      # The last entry is (None, None) which raises a Depreciation Warning. Override...
+                      warnings.filterwarnings("ignore",category=DeprecationWarning)
+                      args = (dist.name, dist.version,)
+                      installed_packages.append(args)
+          
+              # For some reason the last item in list is (None,None) and stops a sort().
+              installed_packages.pop()
+              installed_packages.sort()  # Sort the packages by name
+
+              package_list = []
+              for package_name, version in installed_packages:
+                  #print(f"{package_name} {version}")
+                  package_list.append(f"{package_name} - {version}")
+              #print(package_list)
+              return package_list
+
               
           def add_folder_and_files():
               # Add a folder. In bash "mkdir -p test"         
@@ -125,21 +144,13 @@ jobs:
                       if not os.path.exists(folder + "/" + file):
                           os.mknod(folder + "/" + file)
 
+
           def write_to_file(data_list, filename):
-              # Write data to a file.
+              # Write list of data to a file.
               with open(filename, "w") as fout:
                   for item in data_list:
                     fout.write(item + "\n")
 
-          def perform_push_1():          
-              # Use subprocess to run the git commands to push the updates to github.
-              subprocess.run('''
-                  git config user.name "irsbugs"
-                  git config user.email "irsbugs@hotmail.com"          
-                  git add .
-                  git commit -m "generated"
-                  git push''',
-                  shell=True, check=True, executable='/bin/bash')
 
           def perform_push():          
               # Use subprocess to run the git commands to push the updates to github.
@@ -150,13 +161,19 @@ jobs:
                   git commit -m "generated"
                   git push'''.format(account_name, account_email),
                   shell=True, check=True, executable='/bin/bash')
+
               
           if __name__ == "__main__":
-              #list_installed_packages()
+
               python_modules()
+              
               add_folder_and_files()
               
               data_list = get_info()
               write_to_file(data_list, filename)
+
+              data_list = list_installed_packages()
+              write_to_file(data_list, filename_1)
+              
               perform_push()
-              #perform_push_1()
+
