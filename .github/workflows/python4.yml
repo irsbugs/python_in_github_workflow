@@ -15,7 +15,9 @@ name: Python in Github Workflow
 #
 on: 
   #push:
-  #  branches: [ main ]
+  #  branches: 
+  #  -main
+  #  -src
 
   # Run this workflow manually from the Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
   # If python.yml is "main" branch.
@@ -77,7 +79,7 @@ jobs:
           import time
           
           import matplotlib
-          pip list
+          
           
           #yaml editor triggers on colon :
           with open("test_info", "w") as fout:
@@ -127,4 +129,7 @@ jobs:
               git commit -m "generated"
               git push''',
               shell=True, check=True, executable='/bin/bash')
+              
+          # if __name__ == "__main__":
+              #list_installed_packages()
               
