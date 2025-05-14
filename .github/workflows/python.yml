@@ -21,7 +21,7 @@ on:
 
   # As long as .github/workflows/python.yml is in branch = "main", then
   # "workflow_dispatch" allows manually running this workflow: Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
-  # For another branch (E.g. src) Uncomment "push" and "branches:" and "-src" (above) and 
+  # For another branch (E.g. src) Uncomment "push" and "branches:" and "- src" (above) and 
   # copy python.yml to main.yml and place in src branch .github/workflows/main.yml
   # Ad
   workflow_dispatch:
