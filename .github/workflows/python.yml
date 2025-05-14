@@ -7,6 +7,7 @@ name: Python in Github Workflow
 #
 # References:
 # https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python
+# https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 # https://gitea.com/actions/checkout  <-- "Push a commit using the built-in token"
 # 
 # For github repository: Settings --> Actions --> General --> Workflow permissions --> Check: Read and Write permissions, then Save
