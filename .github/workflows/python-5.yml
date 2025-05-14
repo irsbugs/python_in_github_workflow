@@ -79,7 +79,7 @@ jobs:
 
           filename = "help_info"
           account_name = "irsbugs"
-          account_email: "irsbugs@hotmail.com"
+          account_email = "irsbugs@hotmail.com"
 
           #yaml editor triggers on colon :
 
@@ -131,7 +131,7 @@ jobs:
                   for item in data_list:
                     fout.write(item + "\n")
 
-          def perform_push():          
+          def perform_push_1():          
               # Use subprocess to run the git commands to push the updates to github.
               subprocess.run('''
                   git config user.name "irsbugs"
@@ -141,7 +141,7 @@ jobs:
                   git push''',
                   shell=True, check=True, executable='/bin/bash')
 
-          def perform_push_1():          
+          def perform_push():          
               # Use subprocess to run the git commands to push the updates to github.
               subprocess.run('''
                   git config user.name "{}"
@@ -158,5 +158,5 @@ jobs:
               
               data_list = get_info()
               write_to_file(data_list, filename)
-              #perform_push()
-              perform_push_1()
+              perform_push()
+              #perform_push_1()
