@@ -92,14 +92,24 @@ jobs:
               # Review the Actions log file to see output from... 
               help("modules")
 
+
+          def add_folder_and_files():
+              # Add a folder. In bash "mkdir -p test"         
+              folder_list = ["test_a", "test_b",]          
+              for folder in folder_list:
+                  os.makedirs(folder, exist_ok=True)
+                  # Add a file. In bash "touch testfile"
+                  file_list = ["testfile1", "testfile2",]
+                  for file in file_list:
+                      if not os.path.exists(folder + "/" + file):
+                          os.mknod(folder + "/" + file)
+
           
           def get_info(): 
               # Collect information using, sys, os, time, matplotlib
               data_list = []  
               data_list.append("test_info. Created by running python in yml .github/workflows file.\nStart of info...")
               data_list.append("sys.version: " + str(sys.version))                
-              data_list.append("test_info. Created by running python in yml .github/workflows file...")
-              data_list.append("sys.version: " + str(sys.version))
               data_list.append("sys.version_info: " + str(sys.version_info))
               data_list.append("sys.platform: " + sys.platform)
               data_list.append("sys.path: " + str(sys.path))
@@ -131,18 +141,6 @@ jobs:
                   package_list.append(f"{package_name} - {version}")
               #print(package_list)
               return package_list
-
-              
-          def add_folder_and_files():
-              # Add a folder. In bash "mkdir -p test"         
-              folder_list = ["test_a", "test_b",]          
-              for folder in folder_list:
-                  os.makedirs(folder, exist_ok=True)
-                  # Add a file. In bash "touch testfile"
-                  file_list = ["testfile1", "testfile2",]
-                  for file in file_list:
-                      if not os.path.exists(folder + "/" + file):
-                          os.mknod(folder + "/" + file)
 
 
           def write_to_file(data_list, filename):
