@@ -17,8 +17,8 @@ name: Python in Github Workflow
 on: 
   #push:
     #branches: 
-    #- main
-    #- src
+      #- main
+      #- src
 
   # As long as .github/workflows/python.yml is in branch = "main", then
   # "workflow_dispatch" allows manually running this workflow: Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
