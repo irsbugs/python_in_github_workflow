@@ -11,8 +11,8 @@ name: Python in Github Workflow
 # https://gitea.com/actions/checkout  <-- "Push a commit using the built-in token"
 # 
 # For github repository: Settings --> Actions --> General --> Workflow permissions --> Check: Read and Write permissions, then Save
-# Ian Stewart - 2025-05-08
-# Future: https://pypi.org/project/python-git/#description
+# Ian Stewart - 2025-05-14
+# Future ?: https://pypi.org/project/python-git/#description
 #
 on: 
   #push:
@@ -24,7 +24,7 @@ on:
   # "workflow_dispatch" allows manually running this workflow: Actions --> All Workflows --> "Python in Github Workflow" --> Run workflow.
   # For another branch (E.g. src) Uncomment "push" and "branches:" and "- src" (above) and 
   # copy python.yml to main.yml and place in src branch .github/workflows/main.yml
-  # Ad
+  # After a "commit" to the src branch it will commence running the workflow script.
   workflow_dispatch:
   
 jobs:
@@ -81,7 +81,7 @@ jobs:
           # pip will have downloaded from PyPI and installed matplotlib
           import matplotlib
 
-          filename = "help_info"
+          filename = "test_info"
           account_name = "irsbugs"
           account_email = "irsbugs@hotmail.com"
 
