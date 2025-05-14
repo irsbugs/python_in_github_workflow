@@ -169,8 +169,5 @@ jobs:
               
               data_list = get_info()
               write_to_file(data_list, filename)
-
-              data_list = list_installed_packages()
-              write_to_file(data_list, filename_1)
               
               perform_push()
