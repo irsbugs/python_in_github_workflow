@@ -86,11 +86,10 @@ jobs:
               help("modules")
           
           def get_info(): 
-              # Collect some information
+              # Collect information using, sys, os, time, matplotlib
               data_list = []  
-              data_list.append("test_info. Created by running python in yml .github/workflows file. \nStart of info...\n")
-              data_list.append("sys.version: " + str(sys.version) + "\n")
-                  
+              data_list.append("test_info. Created by running python in yml .github/workflows file.\nStart of info...")
+              data_list.append("sys.version: " + str(sys.version))                
               data_list.append("test_info. Created by running python in yml .github/workflows file...")
               data_list.append("sys.version: " + str(sys.version))
               data_list.append("sys.version_info: " + str(sys.version_info))
@@ -101,6 +100,8 @@ jobs:
               data_list.append("time.ctime(): " + time.ctime())
               data_list.append("matplotlib._get_version(): " + str(matplotlib._get_version()))
               data_list.append("...end of info.")
+
+              return data_list
               
 
               #import pkg_resources
