@@ -74,11 +74,13 @@ jobs:
           import sys
           import subprocess
           import time
-          # pip will have downloaded from pypi and installed matplotlib
+          # pip will have downloaded from PyPI and installed matplotlib
           import matplotlib
 
           filename = "help_info"
-          
+          account_name = "irsbugs"
+          account_email: "irsbugs@hotmail.com"
+
           #yaml editor triggers on colon :
 
           def python_modules():
@@ -138,6 +140,16 @@ jobs:
                   git commit -m "generated"
                   git push''',
                   shell=True, check=True, executable='/bin/bash')
+
+          def perform_push_1():          
+              # Use subprocess to run the git commands to push the updates to github.
+              subprocess.run('''
+                  git config user.name "{}"
+                  git config user.email "{}"          
+                  git add .
+                  git commit -m "generated"
+                  git push'''.format(account_name, account_email),
+                  shell=True, check=True, executable='/bin/bash')
               
           if __name__ == "__main__":
               #list_installed_packages()
@@ -146,5 +158,5 @@ jobs:
               
               data_list = get_info()
               write_to_file(data_list, filename)
-              perform_push()
-              
+              #perform_push()
+              perform_push_1()
