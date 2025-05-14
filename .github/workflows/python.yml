@@ -78,8 +78,6 @@ jobs:
           import sys
           import subprocess
           import time
-          import warnings
-          import importlib.metadata
           # pip will have downloaded from PyPI and installed matplotlib
           import matplotlib
 
