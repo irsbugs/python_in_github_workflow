@@ -3,7 +3,7 @@ name: Python in Github Workflow
 # python.yml
 #
 # Run python code in .github/workflows/python.yml for demonstation of Python in a Github Workflow.
-# Creates some folders and files, gets information, performs pip install, writes to files, etc.
+# Creates some folders and files, gets information, performs pip install, writes to a file, etc.
 #
 # References:
 # https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python
@@ -83,7 +83,6 @@ jobs:
           import matplotlib
 
           filename = "help_info"
-          filename_1 = "python_packages"
           account_name = "irsbugs"
           account_email = "irsbugs@hotmail.com"
 
@@ -119,28 +118,6 @@ jobs:
               data_list.append("matplotlib._get_version(): " + str(matplotlib._get_version()))
               data_list.append("...end of info.")
               return data_list
-
-              
-          def list_installed_packages():
-              distributions = importlib.metadata.distributions()
-              installed_packages = []
-              for dist in distributions:
-                  with warnings.catch_warnings():
-                      # The last entry is (None, None) which raises a Depreciation Warning. Override...
-                      warnings.filterwarnings("ignore",category=DeprecationWarning)
-                      args = (dist.name, dist.version,)
-                      installed_packages.append(args)
-          
-              # For some reason the last item in list is (None,None) and stops a sort().
-              installed_packages.pop()
-              installed_packages.sort()  # Sort the packages by name
-
-              package_list = []
-              for package_name, version in installed_packages:
-                  #print(f"{package_name} {version}")
-                  package_list.append(f"{package_name} - {version}")
-              #print(package_list)
-              return package_list
 
 
           def write_to_file(data_list, filename):
